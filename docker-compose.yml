@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+    prod:
+        container_name: corus
+        image: corus
+        build:
+            dockerfile: ./Dockerfile
+        ports:
+            - 8000:8000
+        restart: unless-stopped
+        networks:
+            - core_service_network
+        depends_on: 
+            - db
+    
+    db:
+        container_name: corus_db
+        image: mysql:5.7.34
+        volumes:
+            - "./.mysql-data/db:/var/lib/mysql"
+            - ./dump.sql:/docker-entrypoint-initdb.d/dump.sql
+        restart: always
+        ports:
+            - 3306:3306
+        networks:
+            - core_service_network
+
+networks:
+    core_service_network:
+        driver: bridge
+        name: core_service_network

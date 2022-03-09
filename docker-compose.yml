@@ -3,7 +3,6 @@ version: '2'
 services:
     prod:
         container_name: corus
-        image: corus
         build:
             dockerfile: ./Dockerfile
         ports:

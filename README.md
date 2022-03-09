@@ -2,10 +2,11 @@
 
 REST API made in Flask/Python for Energy Devices
 
+
 ## Deployment with Docker
 
 ```bash
-# 
+# Nota, el archivo .env no se debe incluir en el repositorio en un proyecto en producción
 $ docker-compose up -d
 ```
 
